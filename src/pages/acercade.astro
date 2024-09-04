@@ -1,5 +1,5 @@
 ---
-
+const pagetitle="Acerca de Astro By Rubén"
 ---
 
 <html lang="es">
@@ -8,9 +8,17 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Acerca de Astro</title>
+		<title>{pagetitle}</title>
 	</head>
 	<body>
-		<h1>Acerca de Astro</h1>
+		<header>
+			<nav>
+				<h1>Acerca de</h1>
+				<a href="/">Home</a>
+                <a href="/acercade/">Acerca de</a>
+                <a href="/posts/post01">Post 1</a>
+			</nav>
+		</header>
+		<h1>Hola Astro</h1>
 	</body>
 </html>

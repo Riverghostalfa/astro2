@@ -1,5 +1,22 @@
 ---
+import '../styles/global.css'
+import Navegacion from '../components/Navegacion.astro'
+import Pie
+const pagetitle="Astro by Sergio"
 
+const identidad= {
+	nombre: 'Sergio',
+	apellido: 'Lopez',
+	pais: 'España',
+	hobbies : ['Games', 'Comics', 'Literatura', 'Música'],
+}
+
+const conocimientos = ['artes', 'programación', 'cocina', 'karate'];
+const finalizado = true;
+const objetivo = 2;
+const conocimientoColor = 'yellow';
+const tamañoFuente='3rem';
+const grosorFuente='bolder';
 ---
 
 <html lang="es">
@@ -8,11 +25,60 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pagetitle}</title>
 	</head>
 	<body>
-		<h1>Hola Astro</h1>
-		<a href="/inicio"></a>
-		<a href="/acercade">Acerca de...</a>
+		<header>
+			<nav>
+				<h1>Acerca de</h1>
+				<Navegacion></Navegacion>
+				<a href="/">Home</a>
+                <a href="/acercade/">Acerca de</a>
+                <a href="/posts/post01">Post 1</a>
+				<a href="/posts/post02">Post 2</a>
+			</nav>
+		</header>
+		<main>
+			<div>
+				<h3>Mi presentación:</h3>
+				<ul>
+					<li>
+						Mi nombre es {identidad.nombre}
+					</li>
+					<li>
+						Soy de {identidad.pais}.
+					</li>
+					<li>Mis pasatiempos preferidos son: 
+						<ol>
+							{identidad.hobbies.length >= 4 &&
+							<li>{identidad.hobbies[0]}.</li>
+							<li>{identidad.hobbies[1]}.</li>
+							<li>{identidad.hobbies[2]}.</li>
+							<li>{identidad.hobbies[3]}.</li>}
+						</ol>
+					</li>
+				</ul>
+				<h2>Estudie Cuenca y tengo conocimientos en diversos ambitos laborales como:</h2>
+				<ul>
+					{conocimientos.map((conocimiento) => <li class="conocimiento">{conocimiento}</li>)}
+					<!--<li>{conocimientos[0]}.</li>
+					<li>{conocimientos[1]}.</li>
+					<li>{conocimientos[2]}.</li>
+					<li>{conocimientos[3]}.</li>-->
+				</ul>
+			</div>
+			{finalizado && <p>He finalizado la pagina</p>}
+			{objetivo == 2 ? <p>Mi objetivo es comer a las 2</p> : <p>Mi objetivo no se ha cumplido</p>}
+		</main>
+		<style define:vars={{conocimientoColor, tamañoFuente, grosorFuente}}>
+			h1{
+				color: purple;
+				font-size: var(--tamañoFuente);
+			}
+			.conocimiento{
+				color:var(--conocimientoColor);
+				font-weight: var(--grosorFuente);
+			}
+		</style>
 	</body>
 </html>
