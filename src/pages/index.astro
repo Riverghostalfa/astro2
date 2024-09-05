@@ -1,15 +1,17 @@
 ---
-import '../styles/global.css'
-import Navegacion from '../components/Navegacion.astro'
-import Pie
-const pagetitle="Astro by Sergio"
+import '../styles/styles.css'
+import  Navegacion from '../components/Navegacion.astro'
+import Pie from '../components/Pie.astro';
+
+
+const pagetitle="Astro By Sergio"
 
 const identidad= {
 	nombre: 'Sergio',
 	apellido: 'Lopez',
 	pais: 'España',
 	hobbies : ['Games', 'Comics', 'Literatura', 'Música'],
-}
+};
 
 const conocimientos = ['artes', 'programación', 'cocina', 'karate'];
 const finalizado = true;
@@ -29,14 +31,9 @@ const grosorFuente='bolder';
 	</head>
 	<body>
 		<header>
-			<nav>
-				<h1>Acerca de</h1>
-				<Navegacion></Navegacion>
-				<a href="/">Home</a>
-                <a href="/acercade/">Acerca de</a>
-                <a href="/posts/post01">Post 1</a>
-				<a href="/posts/post02">Post 2</a>
-			</nav>
+			<h1>Home</h1>
+			<Navegacion />
+			
 		</header>
 		<main>
 			<div>
@@ -70,6 +67,7 @@ const grosorFuente='bolder';
 			{finalizado && <p>He finalizado la pagina</p>}
 			{objetivo == 2 ? <p>Mi objetivo es comer a las 2</p> : <p>Mi objetivo no se ha cumplido</p>}
 		</main>
+		<Pie/>
 		<style define:vars={{conocimientoColor, tamañoFuente, grosorFuente}}>
 			h1{
 				color: purple;
